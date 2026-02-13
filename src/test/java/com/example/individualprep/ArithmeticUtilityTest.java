@@ -54,4 +54,28 @@ class ArithmeticUtilityTest {
             arithmeticUtility.divide(10.0, 0.0);
         });
     }
+
+    @Test
+    void testMultiplyPositiveNumbers() {
+        double result = arithmeticUtility.multiply(3.0, 4.0);
+        assertEquals(12.0, result, 0.0001);
+    }
+
+    @Test
+    void testMultiplyWithZero() {
+        double result = arithmeticUtility.multiply(10.0, 0.0);
+        assertEquals(0.0, result, 0.0001);
+    }
+
+    @Test
+    void testMultiplyNegativeNumbers() {
+        double result = arithmeticUtility.multiply(-2.0, -3.0);
+        assertEquals(6.0, result, 0.0001);
+    }
+
+    @Test
+    void testMultiplyPositiveAndNegative() {
+        double result = arithmeticUtility.multiply(5.0, -2.0);
+        assertEquals(-10.0, result, 0.0001);
+    }
 }
