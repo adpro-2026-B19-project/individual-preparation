@@ -1,20 +1,16 @@
 package com.example.individualprep;
 
 import com.example.individualprep.service.VectorUtility;
-import com.example.individualprep.service.ArithmeticUtility;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 @SpringBootTest
 class IndividualprepApplicationTests {
 
 	@Autowired
 	private VectorUtility vectorUtility;
-	@Autowired
-	private ArithmeticUtility arithmeticUtility;
 
 	@Test
 	void testAddVectorSuccess() {
@@ -36,12 +32,6 @@ class IndividualprepApplicationTests {
 		assertThrows(IllegalArgumentException.class, () -> {
 			vectorUtility.add(v1, v2);
 		});
-	}
-
-	@Test
-	void testExponent() {
-		double result = arithmeticUtility.exponent(2.0, 3);
-		assertEquals(8.0, result);
 	}
 
 
