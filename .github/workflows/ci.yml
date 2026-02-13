@@ -36,7 +36,6 @@ jobs:
 
       - name: Run Linter (Checkstyle)
         run: ./gradlew checkstyleMain checkstyleTest
-        continue-on-error: true
 
       - name: Run Unit Tests
         run: ./gradlew test
@@ -46,4 +45,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew sonar -Dsonar.qualitygate.wait=true
-        continue-on-error: true
