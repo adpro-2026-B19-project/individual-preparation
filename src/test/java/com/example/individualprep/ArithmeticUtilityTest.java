@@ -35,4 +35,23 @@ class ArithmeticUtilityTest {
         double result = arithmeticUtility.subtract(10.0, -5.0);
         assertEquals(15.0, result, 0.0001);
     }
+
+    @Test
+    void testDivideStandard() {
+        double result = arithmeticUtility.divide(10.0, 2.0);
+        assertEquals(5.0, result, 0.0001);
+    }
+
+    @Test
+    void testDivideByNegative() {
+        double result = arithmeticUtility.divide(10.0, -2.5);
+        assertEquals(-4.0, result, 0.0001);
+    }
+
+    @Test
+    void testDivideByZero() {
+        assertThrows(ArithmeticException.class, () -> {
+            arithmeticUtility.divide(10.0, 0.0);
+        });
+    }
 }
