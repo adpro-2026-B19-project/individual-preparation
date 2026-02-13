@@ -31,7 +31,7 @@ tasks.named('test') {
 
 tasks.test {
 	filter {
-		excludeTestMatching("FunctionalTest")
+		excludeTestsMatching("FunctionalTest")
 	}
 
 	finalizedBy(tasks.jacocoTestReport)
