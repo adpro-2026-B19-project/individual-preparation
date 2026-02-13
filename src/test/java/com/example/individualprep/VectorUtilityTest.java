@@ -74,4 +74,23 @@ class VectorUtilityTest {
             vectorUtility.subtract(v1, v2);
         }, "Harus melempar exception jika dimensi vector berbeda");
     }
+
+    @Test
+    void testMultiplyStandard() {
+        double[] v1 = {1.0, 2.0, 3.0};
+        double[] expected = {2.0, 4.0, 6.0};
+        assertArrayEquals(expected, vectorUtility.multiply(v1, 2), 1e-9);
+    }
+
+    @Test
+    void testMultiplyByZero() {
+        double[] v1 = {1.0, 2.0, 3.0};
+        double[] expected = {0.0, 0.0, 0.0};
+        assertArrayEquals(expected, vectorUtility.multiply(v1, 0), 1e-9);
+    }
+
+    @Test
+    void testMultiplyNull() {
+        assertNull(vectorUtility.multiply(null, 5));
+    }
 }
