@@ -3,6 +3,8 @@ plugins {
 	id 'jacoco'
 	id 'org.springframework.boot' version '4.0.2'
 	id 'io.spring.dependency-management' version '1.1.7'
+	id 'checkstyle'
+	id "org.sonarqube" version "7.2.2.6593"
 }
 
 group = 'com.example'
@@ -19,6 +21,25 @@ repositories {
 	mavenCentral()
 }
 
+checkstyle {
+	toolVersion = "10.12.5"
+	configFile = file("config/checkstyle/checkstyle.xml")
+}
+
+sonar {
+	properties {
+		property "sonar.projectKey", "adpro-2026-B19-project_individual-preparation"
+		property "sonar.organization", "adpro-2026-b19-project"
+
+		// This tells Sonar where the code is
+		property "sonar.host.url", "https://sonarcloud.io"
+
+		// This tells Sonar where the Checkstyle report is (so it can display linter errors)
+		// If you used the standard path, it is usually here:
+		property "sonar.java.checkstyle.reportPaths", "build/reports/checkstyle/main.xml"
+	}
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -27,13 +48,7 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
-}
-
-tasks.test {
-	filter {
-		excludeTestsMatching("*FunctionalTest")
-	}
-
+	exclude("**/*FunctionalTest.class")
 	finalizedBy(tasks.jacocoTestReport)
 }
 
