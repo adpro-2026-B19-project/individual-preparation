@@ -11,18 +11,18 @@ public class ArithmeticUtility {
     }
 
     public double subtract(double o1, double o2) {
-        // TODO: Implement me properly!
-        return 0.0;
+        return o1 - o2;
     }
 
     public double multiply(double o1, double o2) {
-        // TODO: Implement me properly!
-        return 0.0;
+        return o1 * o2;
     }
 
     public double divide(double o1, double o2) {
-        // TODO: Implement me properly!
-        return 0.0;
+        if (o2 == 0) {
+            throw new ArithmeticException("Pembagi tidak boleh sama dengan nol");
+        }
+        return o1 / o2;
     }
 
     public double exponent(double o1, int n) {
