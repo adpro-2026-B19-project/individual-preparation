@@ -1,8 +1,10 @@
 plugins {
 	id 'java'
 	id 'jacoco'
+	id 'checkstyle'
 	id 'org.springframework.boot' version '4.0.2'
 	id 'io.spring.dependency-management' version '1.1.7'
+	id("org.sonarqube") version "4.4.1.3373"
 }
 
 group = 'com.example'
@@ -39,4 +41,20 @@ tasks.test {
 
 tasks.jacocoTestReport{
 	dependsOn(tasks.test)
+}
+
+checkstyle {
+	toolVersion = "10.12.3"
+}
+
+tasks.withType(Checkstyle).configureEach {
+	ignoreFailures = false
+}
+
+sonarqube {
+	properties {
+		property("sonar.projectKey", "adpro-2026-B19-project_individual-preparation")
+		property("sonar.organization", "adpro-2026-b19-project")
+		property("sonar.host.url", "https://sonarcloud.io")
+	}
 }
